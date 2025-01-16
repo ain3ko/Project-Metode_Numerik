@@ -1,7 +1,11 @@
+#Dokumentasi oleh Miftah
+
+#Library yang digunakan
 import numpy as np
 import streamlit as st
 import matplotlib.pyplot as plt
 
+#fungsi basis langrange
 def larange_basis(x_values, i, x):
     n = len(x_values)
     basis = 1.0
@@ -10,22 +14,23 @@ def larange_basis(x_values, i, x):
             basis *= (x - x_values[j]) / (x_values[i] - x_values[j])
     return basis
 
+#fungsi interpolasi langrange
 def interpolasi_larange(x_values, y_values, x):
     n = len(x_values)
     y = 0
-    langkah_perhitungan = []  # Menyimpan langkah-langkah perhitungan
+    langkah_perhitungan = []
     for i in range(n):
         basis = larange_basis(x_values, i, x)
-        langkah_perhitungan.append(f"L_{i}({x}) = {basis:.4f}")  # Menyimpan langkah
+        langkah_perhitungan.append(f"L_{i}({x}) = {basis:.4f}")
         y += y_values[i] * basis
     return y, langkah_perhitungan
 
 # Judul aplikasi
-st.markdown("<h1>Interpolasi Langrange</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='color:orange;'> Interpolasi Langrange</h1>", unsafe_allow_html=True)
 
 st.write("Interpolasi merupakan metode untuk menemukan titik data dalam rentang kumpulan titik data yang diketahui. Nah kalau di Matematika Interpolasi merupakan, teknik untuk memperkirakan nilai fungsi untuk setiap nilai antara dari variabel independen")
 st.write("Berikut merupakan rumus Interpolasi Langrange")
-url_gambar = "https://raw.githubusercontent.com/ain3ko/imgall/refs/heads/main/img-rumus-langrange.jpg"  # Contoh URL gambar
+url_gambar = "https://raw.githubusercontent.com/ain3ko/imgall/refs/heads/main/img-rumus-langrange.jpg"
 st.image(url_gambar, caption=" ", use_container_width=True)
 
 st.markdown("<h3 style='color:orange;'>Simulasi</h3>", unsafe_allow_html=True)
